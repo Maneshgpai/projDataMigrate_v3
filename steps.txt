@@ -1,0 +1,19 @@
+#Create folder structure:
+cd /home/john/Documents/projDataMigrate_v3
+mkdir app
+mkdir env
+cd app
+mkdir backend
+mkdir frontend
+
+
+#Set up Python virtual environment:
+cd cd /home/john/Documents/projDataMigrate_v3/env
+python3 -m pip install --user virtualenv
+python3 -m venv env
+
+#activate virtual env:
+source env/bin/activate
+
+#deactivate virtual env:
+deactivate
