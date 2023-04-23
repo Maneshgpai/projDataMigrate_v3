@@ -33,4 +33,18 @@ python3 manage.py runserver
 # 6. Create React app
 cd /home/john/Documents/projDataMigrate_v3/app
 
-# 7. 
+# 7. Install React additional packages
+# for user interface
+npm install react-bootstrap bootstrap
+# for routing
+npm install react-router-dom
+
+# 8. Clean default app files & folders
+# 8a. Remove default files
+rm /home/john/Documents/projDataMigrate_v3/app/frontend/App.css
+rm /home/john/Documents/projDataMigrate_v3/app/frontend/public/logo192.png
+rm /home/john/Documents/projDataMigrate_v3/app/frontend/public/logo512.png
+rm /home/john/Documents/projDataMigrate_v3/app/frontend/src/logo.svg
+# 8b. Change manifest.json to remove above file invocations
+frontend/public/manifest.json
+frontend/src/App.js
