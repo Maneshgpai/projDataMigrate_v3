@@ -3,24 +3,34 @@ cd /home/john/Documents/projDataMigrate_v3
 mkdir app
 cd app
 mkdir backend
-mkdir frontend
 
 
-# 2. Set up Python virtual environment:
+# 2. Setup GIT repository via Visual Studio Code
+
+# 3. Set up Python virtual environment:
 cd /home/john/Documents/projDataMigrate_v3/app/backend
 python3 -m pip install --user virtualenv
 python3 -m venv venv
 
-# 2a. activate virtual env:
-source env/bin/activate
+# 3a. activate virtual env:
+source /home/john/Documents/projDataMigrate_v3/app/backend/venv/bin/activate
 
-# 2b. deactivate virtual env:
+# 3b. deactivate virtual env:
 deactivate
 
-# 2c. install libraries:
-python3 -m pip install ______
-
-# 3. Setup GIT via Visual Studio Code
+# 4. Install libraries:
+pip install django
 
 
+# 5. Initiate Django project
+cd /home/john/Documents/projDataMigrate_v3/app/backend
+django-admin startproject server
 
+# 5a. run development server
+cd /home/john/Documents/projDataMigrate_v3/app/backend/server
+python3 manage.py runserver
+
+# 6. Create React app
+cd /home/john/Documents/projDataMigrate_v3/app
+
+# 7. 
