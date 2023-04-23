@@ -1,5 +1,5 @@
-# Ignore all txt files
-#*.txt
+steps.txt
+*.env
 
-# Ignore below folder
+#Ignore below folders
 env

@@ -1,19 +1,26 @@
-#Create folder structure:
+# 1. Create folder structure:
 cd /home/john/Documents/projDataMigrate_v3
 mkdir app
-mkdir env
 cd app
 mkdir backend
 mkdir frontend
 
 
-#Set up Python virtual environment:
-cd cd /home/john/Documents/projDataMigrate_v3/env
+# 2. Set up Python virtual environment:
+cd /home/john/Documents/projDataMigrate_v3/app/backend
 python3 -m pip install --user virtualenv
-python3 -m venv env
+python3 -m venv venv
 
-#activate virtual env:
+# 2a. activate virtual env:
 source env/bin/activate
 
-#deactivate virtual env:
+# 2b. deactivate virtual env:
 deactivate
+
+# 2c. install libraries:
+python3 -m pip install ______
+
+# 3. Setup GIT via Visual Studio Code
+
+
+
