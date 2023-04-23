@@ -33,6 +33,7 @@ class Login extends Component {
       <Container>
         <Row>
           <Col md="4">
+            <h1>Welcome back to brewmydata</h1>
             <h1>Login</h1>
             <Form>
               <Form.Group controlId="usernameId">
@@ -40,7 +41,7 @@ class Login extends Component {
                 <Form.Control
                   type="text"
                   name="username"
-                  placeholder="Enter user name"
+                  placeholder="Enter user name/ email"
                   value={this.state.username}
                   onChange={this.onChange}
                 />

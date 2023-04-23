@@ -42,7 +42,7 @@ class Signup extends Component {
                 <Form.Control
                   type="text"
                   name="username"
-                  placeholder="User name/ email"
+                  placeholder="Enter User name/ email"
                   value={this.state.username}
                   onChange={this.onChange}
                 />
