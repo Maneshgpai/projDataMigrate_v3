@@ -1,1 +1,13 @@
-django==4.2
+$proj_home = /home/john/Documents/projDataMigrate_v5
+
+mkdir $proj_home  $proj_home/app  $proj_home/app/backend
+cd $proj_home/app/backend
+python3 -m pip install --user virtualenv
+python3 -m venv venv
+source $proj_home/app/backend/venv/bin/activate
+
+cd $proj_home/app/backend
+pip install django
+cd $proj_home/app/frontend
+npm install react@17.0.2 react-dom@17.0.2
+npm install react-bootstrap bootstrap react-router-dom redux react-redux redux-thunk connected-react-router

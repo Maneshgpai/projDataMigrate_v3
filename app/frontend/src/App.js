@@ -1,6 +1,7 @@
 // frontend/src/App.js
 import React, { Component } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Root from "./Root";
+import { Route, Routes } from "react-router-dom";
 import Signup from "./components/signup/Signup";
 import Login from "./components/login/Login";
 import Dashboard from "./components/dashboard/Dashboard";
@@ -10,7 +11,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <BrowserRouter>
+        <Root>
           <Routes>
             <Route exact path="/" element={<Signup/>} />
             <Route path="/signup" element={<Signup/>} />
@@ -18,7 +19,7 @@ class App extends Component {
             <Route path="/dashboard" element={<Dashboard/>} />
             <Route path="*" element={<Default/>} />
           </Routes>
-        </BrowserRouter>
+        </Root>
       </div>
     );
   }

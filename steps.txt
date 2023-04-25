@@ -4,7 +4,6 @@ mkdir app
 cd app
 mkdir backend
 
-
 # 2. Setup GIT repository via Visual Studio Code
 
 # 3. Set up Python virtual environment:
@@ -32,6 +31,53 @@ python3 manage.py runserver
 
 # 6. Create React app
 cd /home/john/Documents/projDataMigrate_v3/app
+npx create-react-app frontend
+cd frontend
+npm start
+
+# 6 a. Downgrade to React v17, as connected-react-router is not compatible with React v18
+Option I:
+# 6 a.1: Remove node_modules and package-lock.json
+	cd /home/john/Documents/projDataMigrate_v3/app/frontend
+	rm -r node_modules
+	rm -r package-lock.json
+# 6 a.2: Change entries in package.json
+	"@testing-library/react": "^12.1.5"
+	"react": "^17.0.2"
+    "react-dom": "^17.0.2"
+# 6 a.3: Install NPM
+	cd /home/john/Documents/projDataMigrate_v3/app/frontend
+	npm install
+# 6 a.4: Change src/Index.js to below:
+	import React from 'react';
+	import ReactDOM from 'react-dom';
+	import './index.css';
+	import App from './App';
+	import "bootstrap/dist/css/bootstrap.css";
+
+	ReactDOM.render(
+	  <React.StrictMode>
+		<App/>
+	  </React.StrictMode>,
+	  document.getElementById('root')
+	);
+
+Option II:
+npm uninstall react react-dom
+npm install react@17.0.2 react-dom@17.0.2
+Change src/Index.js to below:
+	import React from 'react';
+	import ReactDOM from 'react-dom';
+	import './index.css';
+	import App from './App';
+	import "bootstrap/dist/css/bootstrap.css";
+
+	ReactDOM.render(
+	  <React.StrictMode>
+		<App/>
+	  </React.StrictMode>,
+	  document.getElementById('root')
+	);
 
 # 7. Install React additional packages
 # for user interface
@@ -48,3 +94,14 @@ rm /home/john/Documents/projDataMigrate_v3/app/frontend/src/logo.svg
 # 8b. Change manifest.json to remove above file invocations
 frontend/public/manifest.json
 frontend/src/App.js
+
+# 9. Add new files signup.js, login.js, home.js, dashboard.js. 
+
+# 10. Add router info for each page, in App.js
+
+# 11. Add Redux to save application state
+npm install redux
+npm install react-redux@7.1
+npm install redux-thunk
+npm install connected-react-router
+
