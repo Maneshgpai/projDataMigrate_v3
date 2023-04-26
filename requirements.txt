@@ -1,4 +1,6 @@
-$proj_home = /home/john/Documents/projDataMigrate_v5
+PROJ_HOME=/home/john/Documents/projDataMigrate_v5
+PROJ_DIR=
+PROJ_FULL_PATH=$proj_home/$PROJ_DIR
 
 mkdir $proj_home  $proj_home/app  $proj_home/app/backend
 cd $proj_home/app/backend
@@ -7,7 +9,7 @@ python3 -m venv venv
 source $proj_home/app/backend/venv/bin/activate
 
 cd $proj_home/app/backend
-pip install django
+pip install django djangorestframework==3.11.2 markdown django-filter djoser
 cd $proj_home/app/frontend
 npm install react@17.0.2 react-dom@17.0.2
 npm install react-bootstrap bootstrap react-router-dom redux react-redux redux-thunk connected-react-router

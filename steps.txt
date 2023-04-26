@@ -13,8 +13,7 @@ python3 -m venv venv
 
 # 3a. activate virtual env:
 source /home/john/Documents/projDataMigrate_v3/app/backend/venv/bin/activate
-
-# 3b. deactivate virtual env:
+#deactivate virtual env:
 deactivate
 
 # 4. Install libraries:
@@ -30,6 +29,7 @@ cd /home/john/Documents/projDataMigrate_v3/app/backend/server
 python3 manage.py runserver
 
 # 6. Create React app
+https://saasitive.com/tutorial/react-routing-components-signup-login/
 cd /home/john/Documents/projDataMigrate_v3/app
 npx create-react-app frontend
 cd frontend
@@ -37,6 +37,7 @@ npm start
 
 # 6 a. Downgrade to React v17, as connected-react-router is not compatible with React v18
 Option I:
+https://github.com/facebook/create-react-app/issues/12269#issuecomment-1154101796
 # 6 a.1: Remove node_modules and package-lock.json
 	cd /home/john/Documents/projDataMigrate_v3/app/frontend
 	rm -r node_modules
@@ -63,6 +64,7 @@ Option I:
 	);
 
 Option II:
+https://dev.to/ifeanyichima/how-to-downgrade-from-react-18-to-1702-818
 npm uninstall react react-dom
 npm install react@17.0.2 react-dom@17.0.2
 Change src/Index.js to below:
@@ -78,6 +80,7 @@ Change src/Index.js to below:
 	  </React.StrictMode>,
 	  document.getElementById('root')
 	);
+
 
 # 7. Install React additional packages
 # for user interface
@@ -100,8 +103,72 @@ frontend/src/App.js
 # 10. Add router info for each page, in App.js
 
 # 11. Add Redux to save application state
+# 11a. Install Redux packages
 npm install redux
 npm install react-redux@7.1
 npm install redux-thunk
 npm install connected-react-router
+
+# 11b. Add new files for Reducer and Store of Redux:
+frontend/src/Root.js
+frontend/src/Reducer.js
+
+# 11c. Replace Router with Root component in App.js
+<Root> {/* replace BrowserRouter with Root */}
+.
+.
+.
+</Root> {/* replace BrowserRouter with Root */}
+
+
+# 12. Setup Token based Authentication with Django Rest Framework and Djoser
+To include: human check during new user creation, Using of social media / Google account for new user, new user email authentication, password reset, user deletion, sending of mail for data deletion, GDPR and CPA compliance
+https://saasitive.com/tutorial/token-based-authentication-django-rest-framework-djoser/
+
+# 12a. Install packages:
+cd /home/john/Documents/projDataMigrate_v3/app/backend
+source venv/bin/activate
+pip install djangorestframework==3.11.2 markdown django-filter djoser
+
+# 12b. Add configuration changes for the packages in /home/john/Documents/projDataMigrate_v3/app/backend/server/server/settings.py
+
+# 12c. Add Django app to add Signup URLs
+cd /home/john/Documents/projDataMigrate_v3/app/backend/server
+django-admin startapp accounts
+mkdir apps
+mv accounts apps
+
+# 12d. Add this app to backend/server/server/settings.py
+INSTALLED_APPS = [
+    .
+	.
+	.
+	.
+	.
+	.
+	'apps.accounts' # Added by Manesh 25-Apr #add new application
+]
+
+# 12e. Add a new file urls.py in backend/server/apps/accounts
+from django.conf.urls import url, include
+accounts_urlpatterns = [
+    url(r'^api/v1/', include('djoser.urls')),
+    url(r'^api/v1/', include('djoser.urls.authtoken')),
+]
+
+# 12f. Ensure the App name in apps.py is same as settings.py (app/backend/server/apps/accounts/apps.py)
+From: name = 'accounts'
+To: name = 'apps.accounts'
+
+# 12g. Change backend/server/apps/accounts/urls.py and replace URL with REPATH. This is because URL is deprecated in Django 4.(/home/john/Documents/projDataMigrate_v3/app/backend/server/apps/accounts/urls.py)
+FROM : from django.conf.urls import re_path, include
+TO : from django.conf.urls import include
+	 from django.urls import re_path
+
+# 12h. Update main urls at backend/server/server/urls.py to have endpoints available in the web server
+
+
+# 12i. Ready to check endpoints. Apply database migrations (We don’t need to run ./manage.py makemigrations because we do not add any new models. We use models from Django and DRF, that’s why we need to run migrate.)
+# please run in backend/server directory
+./manage.py migrate
 
